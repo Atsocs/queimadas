@@ -1,5 +1,45 @@
+.Query {
+  height: 80px;
+  background-color: tomato;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  /* align-items: center; */
+  text-align: center;
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+ /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
+ @media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+} 
+
+.searchbar{
+  width: 300px;
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
+/* 
 .App {
   text-align: center;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+
+  display: flex;
+  flex-direction: row;
 }
 
 .App-logo {
@@ -35,10 +75,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.searchbar{
-  width: 300px;
-  margin-top: 10px;
-  margin-right: 5px;
-}
+} */
