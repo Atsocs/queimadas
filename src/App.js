@@ -1,14 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
-import SearchBar from './scripts/searchbar.js'
-import Mensagem from './Mensagem.js'
+import SearchBar from './scripts/SearchBar.js'
+import FireBoard from './FireBoard.js'
 
 function App() {
 
   return (
     <div className="App">
       <SearchBar></SearchBar>
-      <Mensagem uf="SP" municipio="São José dos Campos" focosCount="3"></Mensagem>
+      <FireBoard
+        stateCode="AC"
+        cityName="Rio Branco"
+        countryFires="1717"
+        stateFires="43"
+        cityFires="12"
+      ></FireBoard>
     </div>
   );
 }

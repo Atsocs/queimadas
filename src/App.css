@@ -1,78 +1,25 @@
-.Query {
-  height: 80px;
-  background-color: tomato;
+.col {
+    flex: 1;
+    width: 33.33%;
+    text-align: center;
 }
 
-.column {
-  float: left;
-  width: 33.33%;
-  /* align-items: center; */
-  text-align: center;
-
+.row {
+    display: flex;
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.SearchBar {
+    width: 300px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    min-height: 3vh;
 }
 
- /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
- @media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-} 
-
-.searchbar{
-  width: 300px;
-  margin-top: 10px;
-  margin-right: 5px;
-}
-
-/* 
 .App {
-  text-align: center;
-  justify-content: center;
-  min-height: 100vh;
-  align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    background-color: #282c34;
 
-  display: flex;
-  flex-direction: row;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+    font-size: calc(10px + 1vmin);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
