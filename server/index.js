@@ -1,4 +1,5 @@
 const express = require('express')
+const cityFilter = require('./utils/check_city')
 
 const PORT = process.env.PORT || 3001;
 
@@ -11,3 +12,5 @@ app.get("/api", (req, res) => {
 app.listen(PORT, () =>{
     console.log(`Server listening on ${PORT}`);
 })
+
+console.log('Numero focos:', cityFilter.num_focos)
