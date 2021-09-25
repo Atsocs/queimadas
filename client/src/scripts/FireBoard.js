@@ -21,7 +21,9 @@ function toTitleCase(str) {
 class FireBoard extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { found: false };
+        this.state = (props.dataOrigin === 'query') ?
+            props.queryResponse : { found: false };
+        this.state.dataOrigin = props.dataOrigin;
     }
 
 
@@ -51,7 +53,9 @@ class FireBoard extends React.Component {
     }
 
     componentDidMount() {
-        this.getData();
+        if (this.state.dataOrigin === 'ip') {
+            this.getData();
+        }
     }
 
     getFire(fireCount) {
