@@ -1,5 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser');
+const cors = require('cors')
+
 const cityFilter = require('./utils/check_city')
 const stateFilter = require('./utils/check_state')
 const totalFilter = require('./utils/total')
@@ -9,6 +11,8 @@ const stateNames = require('./utils/state_names')
 const PORT = process.env.PORT || 3001;
 
 const app = express()
+
+app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
