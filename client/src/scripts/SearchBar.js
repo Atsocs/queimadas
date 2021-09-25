@@ -9,6 +9,7 @@ class SearchBar extends React.Component {
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.setAppData = props.setAppData;
     }
   
     handleChange(event) {
@@ -20,6 +21,16 @@ class SearchBar extends React.Component {
       alert('A name was submitted: ' + this.state.value);
       event.preventDefault();
       //////colocar a função que trata a cidade pesquisada pelo usuário
+      const data = { // Apenas um exemplo
+        found: true,
+        location: {
+            stateCode: data.stateCode,
+            cityName: data.cityName,
+        },
+        firesCount: [12, 230, 2923], // [cidade, estado, país]
+        locationText: ["em " + "Belém", "no " + "Pará", "no Brasil"],
+      }
+      this.setAppData(data)
     }
   
     render() {

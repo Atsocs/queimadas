@@ -1,15 +1,8 @@
 import './App.css';
-import SearchBar from './scripts/SearchBar.js'
-import FireBoard from './scripts/FireBoard.js'
+import FireApp from './FireApp'
 
 function App() {
-
-  return (
-    <div className="App">
-      <SearchBar />
-      <FireBoard />
-    </div>
-  );
+  return <FireApp />
 }
 
 export default App;
