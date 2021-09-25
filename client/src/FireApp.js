@@ -26,7 +26,7 @@ class FireApp extends React.Component {
             const stateData = this.state.data;
             const brasilFires = this.fireBoardElement.current.state.firesCount[2];
             const fireState = {
-                found: true,
+                found: true, // TODO: set this boolean accordingly
                 firesCount: [stateData.cityFires, stateData.stateFires, brasilFires],
                 locationText: [
                     "em " + stateData.cityName,
