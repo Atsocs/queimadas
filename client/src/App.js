@@ -1,6 +1,6 @@
 import './App.css';
 import SearchBar from './scripts/SearchBar.js'
-import FireBoard from './FireBoard.js'
+import FireBoard from './scripts/FireBoard.js'
 
 function App() {
 
