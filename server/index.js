@@ -4,6 +4,7 @@ const cityFilter = require('./utils/check_city')
 const stateFilter = require('./utils/check_state')
 const totalFilter = require('./utils/total')
 const xhrLocation = require('./utils/geolocation')
+const stateNames = require('./utils/state_names')
 
 const PORT = process.env.PORT || 3001;
 
@@ -25,6 +26,28 @@ app.get("/api/whereami", (req, res) => {
         res.json(404, { message: 'Not Found' })
     }
 });
+
+app.get("/api/here", (req, res) => {
+    const loc = JSON.parse(xhrLocation.response);
+    if (!loc) {
+        res.json(404, { message: 'I do not know where you are' })
+        return
+    }
+    const cityName = loc.city.toUpperCase();
+    const stateName = stateNames[loc.region];
+
+    const cityFiltered = cityFilter(cityName);
+    const stateFiltered = stateFilter(stateName);
+    const totalFiltered = totalFilter();
+    res.json({
+        stateCode: loc.region,
+        stateName: stateName,
+        cityName: cityName,
+        cityFires: cityFiltered.num_focos,
+        stateFires: stateFiltered.num_focos,
+        countryFires: totalFiltered.num_focos,
+    })
+})
 
 app.post("/api/city", (req, res) => {
     const body = req.body
