@@ -18,42 +18,42 @@ app.get("/api", (req, res) => {
 
 app.get("/api/whereami", (req, res) => {
     const loc = JSON.parse(xhrLocation.response);
-    if(loc){
-        res.json({ location: loc});
+    if (loc) {
+        res.json({ location: loc });
     }
-    else{
+    else {
         res.json(404, { message: 'Not Found' })
     }
 });
 
 app.post("/api/city", (req, res) => {
     const body = req.body
-    if(body){
-        const {focos, num_focos} = cityFilter(body.city)
-        res.json({ num_focos: num_focos, focos: focos })        
+    if (body) {
+        const { focos, num_focos } = cityFilter(body.city)
+        res.json({ num_focos: num_focos, focos: focos })
     }
-    else{
+    else {
         res.json(400, { message: 'Wrong request' })
     }
 })
 
 app.post("/api/state", (req, res) => {
     const body = req.body
-    if(body){
+    if (body) {
         const { num_focos } = stateFilter(body.state)
-        res.json({ num_focos: num_focos })        
+        res.json({ num_focos: num_focos })
     }
-    else{
+    else {
         res.json(400, { message: 'Wrong request' })
     }
 })
 
 app.get("/api/total", (req, res) => {
     const { num_focos } = totalFilter()
-    res.json({ num_focos: num_focos })        
+    res.json({ num_focos: num_focos })
 })
 
 
-app.listen(PORT, () =>{
+app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 })
