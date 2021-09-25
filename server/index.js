@@ -37,6 +37,12 @@ app.post("/api/state", (req, res) => {
     }
 })
 
+app.get("/api/total", (req, res) => {
+    const { num_focos } = totalFilter()
+    res.json({ num_focos: num_focos })        
+})
+
+
 app.listen(PORT, () =>{
     console.log(`Server listening on ${PORT}`);
 })
