@@ -1,7 +1,7 @@
 const XMLHttpRequest = require('xhr2');
 
 const ip = '' // '177.23.184.166' // Usando esse ip para teste
-const endpoint = `http://ip-api.com/json/${ip}?fields=status,message,countryCode,region,city,lat,lon`;
+const endpoint = `http://ip-api.com/json/${ip}?fields=query,status,message,countryCode,region,city,lat,lon`;
 
 let xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function () {
