@@ -1,4 +1,4 @@
-import { FaFire } from 'react-icons/fa'
+import { FaFire, FaBan } from 'react-icons/fa'
 import React from "react";
 
 // TODO: Parametrize those consts below according to historical data, for city/state/country separately
@@ -13,6 +13,7 @@ class FireBoard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            found: !props.hasOwnProperty("notFound"),
             location: {
                 countryCode: props.countryCode ? props.countryCode : "BR",
                 stateCode: props.stateCode,
@@ -39,8 +40,9 @@ class FireBoard extends React.Component {
     }
 
     renderRegion(fireCount, locationText) {
+        fireCount = parseInt(fireCount);
         const regionParagraph = <p>{fireCount === 0 ? "Não há " : `Há ${fireCount} `}
-            focos de queima {locationText}!</p>;
+            foco{fireCount === 1 ? '' : 's'} de queima {locationText}!</p>;
         return (
             <div className="col">
                 {regionParagraph}
@@ -50,6 +52,9 @@ class FireBoard extends React.Component {
     }
 
     render() {
+        if (!this.state.found) {
+            return <p><FaBan /> Município não encontrado <FaBan /></p>
+        }
         return (
             <div className="row">
                 {this.state.firesCount.map((x, i) => this.renderRegion(x, this.state.locationText[i]))}

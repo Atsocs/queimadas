@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <SearchBar></SearchBar>
       <FireBoard
+        // notFound // uncomment this to pass notFound to the component
         stateCode="AC"
         cityName="Rio Branco"
         countryFires="1717"
