@@ -1,6 +1,7 @@
 import { FaFire, FaBan } from 'react-icons/fa'
 import React from "react";
 import axios from 'axios';
+import toTitleCase from './title_case';
 
 // TODO: Parametrize those consts below according to historical data, for city/state/country separately
 // for fireCount between fireCountSmall and fireCountBig, the fire grows linearly.
@@ -8,15 +9,6 @@ const fireCountSmall = 1; // minimum of fireCount in order to show a fire
 const fireCountBig = 1; // number of fireCount where the fire stops increasing
 const fireSizeSmall = 20; // size of the smallest fire
 const fireSizeBig = 20; // size of the biggest fire
-
-function toTitleCase(str) {
-    return str.replace(
-        /\w\S*/g,
-        function (txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }
-    );
-}
 
 class FireBoard extends React.Component {
     constructor(props) {
