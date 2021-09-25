@@ -1,35 +1,40 @@
 import React from "react";
-import axios from "axios"
+import axios from "axios";
+import toTitleCase from './title_case';
+
 class SearchBar extends React.Component {
     constructor(props) {
       super(props);
       this.state = { placeholder_city: 'Busque por uma cidade',
                      placeholder_state: 'Digite o estado correspondente' };
+      this.setAppData = props.setAppData;
     }
 
     getData(){
-      const resCity = axios.post("http://localhost:3001/api/city", {
-        city: document.getElementById("city").value,
-        state: document.getElementById("state").value
+      const cityName = toTitleCase(document.getElementById("city").value);
+      const stateName = toTitleCase(document.getElementById("state").value);
+      axios.post("http://localhost:3001/api/city", {
+        city: cityName,
+        state: stateName,
       }).then((res) => {
-        const body = res.body;
-        this.setState({
-          resCity: res.data
+        this.setAppData({
+          found: true,
+          cityName: cityName,
+          cityFires: res.data.num_focos,
         })
-        console.log(this.state)
       }).catch((e) => {
         console.log(e);
       })
 
-      const resState = axios.post("http://localhost:3001/api/city", {
+      axios.post("http://localhost:3001/api/city", {
         city: "",
-        state: document.getElementById("state").value
+        state: stateName,
       }).then((res) => {
-        const body = res.body;
-        this.setState({
-          resState: res.data
+        this.setAppData({
+          found: true,
+          stateName: stateName,
+          stateFires: res.data.num_focos,
         })
-        console.log(this.state)
       }).catch((e) => {
         console.log(e);
       })
@@ -37,7 +42,6 @@ class SearchBar extends React.Component {
 
     handleSubmit = (event) => {
       event.preventDefault();
-      console.log(this)
       this.getData();
     }
   

@@ -18,7 +18,6 @@ class FireBoard extends React.Component {
         this.state.dataOrigin = props.dataOrigin;
     }
 
-
     async getData() {
         const res = await axios.get('http://localhost:3001/api/here')
         const { status, data } = await res;
@@ -32,10 +31,6 @@ class FireBoard extends React.Component {
 
         const state = {
             found: true,
-            location: {
-                stateCode: data.stateCode,
-                cityName: data.cityName,
-            },
             firesCount: [data.cityFires, data.stateFires, data.countryFires],
             // // TODO: get locationText from stateCode and cityName, with the correct article.
             // // Example: RJ => "no Rio de Janeiro", SP => "em São Paulo"
