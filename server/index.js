@@ -50,24 +50,27 @@ app.get("/api/here", (req, res) => {
 })
 
 app.post("/api/city", (req, res) => {
+    console.log(req.body);
     const body = req.body
-    if (body) {
-        const { focos, num_focos } = cityFilter(body.city)
-        res.json({ num_focos: num_focos, focos: focos })
+    const city = body.city.toUpperCase()
+    const state = body.state.toUpperCase()
+    if(city != ""){
+        if (body) {
+            const { focos, num_focos } = cityFilter(city, state)
+            res.json({ num_focos: num_focos, focos: focos })
+        }
+        else {
+            res.json(400, { message: 'Wrong request' })
+        }
     }
-    else {
-        res.json(400, { message: 'Wrong request' })
-    }
-})
-
-app.post("/api/state", (req, res) => {
-    const body = req.body
-    if (body) {
-        const { num_focos } = stateFilter(body.state)
-        res.json({ num_focos: num_focos })
-    }
-    else {
-        res.json(400, { message: 'Wrong request' })
+    else{
+        if (body) {
+            const { num_focos } = stateFilter(state)
+            res.json({ num_focos: num_focos })
+        }
+        else {
+            res.json(400, { message: 'Wrong request' })
+        }
     }
 })
 
