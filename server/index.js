@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cityFilter = require('./utils/check_city')
 const stateFilter = require('./utils/check_state')
 const totalFilter = require('./utils/total')
+const xhrLocation = require('./utils/geolocation')
 
 const PORT = process.env.PORT || 3001;
 
@@ -13,6 +14,16 @@ app.use(bodyParser.json())
 
 app.get("/api", (req, res) => {
     res.json({ message: "Fire check Api" });
+});
+
+app.get("/api/whereami", (req, res) => {
+    const loc = JSON.parse(xhrLocation.response);
+    if(loc){
+        res.json({ location: loc});
+    }
+    else{
+        res.json(404, { message: 'Not Found' })
+    }
 });
 
 app.post("/api/city", (req, res) => {
