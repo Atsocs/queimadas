@@ -1,6 +1,21 @@
+import React, { useEffect } from "react";
 import "./BrazilMap.css";
 
-export default function BrazilMap() {
+export default function BrazilMap({ onClick }) {
+  useEffect(() => {
+    document.querySelector("body").addEventListener(
+      "click",
+      function (e) {
+        var anchor = e.target.closest("a");
+        if (anchor !== null) {
+          const sigla = anchor.textContent.slice(-2);
+          onClick(sigla);
+        }
+      },
+      false
+    );
+  }, []);
+
   return (
     <div>
       <svg
