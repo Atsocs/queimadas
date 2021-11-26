@@ -1,0 +1,31 @@
+path {
+  fill: #0094d9;
+}
+
+text {
+  fill: #fff;
+  font: 12px Arial-BoldMT, sans-serif;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover path {
+  fill: #003399 !important;
+}
+
+.circle {
+  fill: #66ccff;
+}
+
+a:hover .circle {
+  fill: #003399 !important;
+  cursor: pointer;
+}

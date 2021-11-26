@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import BrazilMap from "./BrazilMap";
+import BrazilMap from "./Components/BrazilMap";
 import Select from "react-select";
-import estadosCidades from "./data/estados-cidades.json";
+import estadosCidades from "./estados-cidades.json";
 
 function getCidades(siglaEstado) {
   const data = estadosCidades.estados.filter((obj) => {
