@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import BrazilMap from "./BrazilMap";
 
-function App() {
+import React from "react";
+import Select from "react-select";
+
+const estados = [
+  { value: "SP", label: "São Paulo" },
+  { value: "MG", label: "Minas Gerais" },
+  { value: "RJ", label: "Rio de Janeiro" },
+];
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Select options={estados} placeholder="Estado" />
+      <BrazilMap></BrazilMap>
     </div>
   );
 }
-
-export default App;
