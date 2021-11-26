@@ -22,9 +22,29 @@ export default function CitySelector() {
   const [siglaEstado, setSiglaEstado] = useState("");
   const [cidadeSelecionada, setCidadeSelecionada] = useState("");
 
+  const styles = {
+    container: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    select: {
+      menu: (provided, _) => ({
+        ...provided,
+        width: 400,
+      }),
+      control: (provided, _) => ({
+        ...provided,
+        width: 400,
+      }),
+    },
+  };
+
   const cidades = getCidades(siglaEstado);
+  const placeholder =
+    "Selecione " + (siglaEstado === "" ? "o estado primeiro" : "a cidade");
   return (
-    <div>
+    <div style={styles.container}>
       <BrazilMap
         onClick={(sigla) => {
           setSiglaEstado(sigla);
@@ -33,10 +53,12 @@ export default function CitySelector() {
       />
       <Select
         name="cidade"
+        styles={styles.select}
         options={cidades}
         value={cidadeSelecionada}
         onChange={(cidade) => setCidadeSelecionada(cidade)}
-        placeholder="Cidade"
+        isDisabled={siglaEstado === ""}
+        placeholder={placeholder}
       />
     </div>
   );
