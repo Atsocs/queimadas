@@ -6,6 +6,7 @@ export default function BrazilMap({ onClick }) {
     document.querySelector("body").addEventListener(
       "click",
       function (e) {
+        e.preventDefault();
         var anchor = e.target.closest("a");
         if (anchor !== null) {
           const sigla = anchor.textContent.slice(-2);
