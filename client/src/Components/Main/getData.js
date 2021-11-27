@@ -38,8 +38,7 @@ export const getBrazilData = (setNumFocosBrasil) => {
 
 export const getStateData = (nomeEstado, setNumFocosEstado) => {
   axios
-    .post(`${baseURL}/api/city`, {
-      city: "",
+    .post(`${baseURL}/api/state`, {
       state: nomeEstado,
     })
     .then((res) => {
@@ -50,11 +49,10 @@ export const getStateData = (nomeEstado, setNumFocosEstado) => {
     });
 };
 
-export const getCityData = (nomeCidade, nomeEstado, setNumFocosCidade) => {
+export const getCityData = (nomeCidade, setNumFocosCidade) => {
   axios
     .post(`${baseURL}/api/city`, {
       city: nomeCidade,
-      state: nomeEstado,
     })
     .then((res) => {
       setNumFocosCidade(res.data.num_focos);
