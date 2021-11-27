@@ -1,24 +1,8 @@
-import React, { useEffect } from "react";
-import "./index.css";
+import React from "react";
 import estadosSvg from "./estados-svg.json";
 import Estado from "./../Estado";
 
-export default function BrazilMap({ onClick }) {
-  useEffect(() => {
-    document.querySelector("body").addEventListener(
-      "click",
-      function (e) {
-        e.preventDefault();
-        var anchor = e.target.closest("a");
-        if (anchor !== null) {
-          const sigla = anchor.textContent.slice(-2);
-          onClick(sigla);
-        }
-      },
-      false
-    );
-  }, []);
-
+export default function BrazilMap({ onClick, select }) {
   return (
     <div>
       <svg
@@ -43,6 +27,8 @@ export default function BrazilMap({ onClick }) {
                 path={estado.path}
                 matrix={estado.matrix}
                 circlePath={estado.circlePath}
+                onClick={() => onClick(estado.sigla)}
+                selected={estado.sigla === select}
               />
             );
           })}
@@ -50,5 +36,4 @@ export default function BrazilMap({ onClick }) {
       </svg>
     </div>
   );
-  // <!-- Creditos to olx.com.br -->
 }

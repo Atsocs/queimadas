@@ -46,6 +46,7 @@ export default function CitySelector() {
   return (
     <div style={styles.container}>
       <BrazilMap
+        select={siglaEstado}
         onClick={(sigla) => {
           setSiglaEstado(sigla);
           setCidadeSelecionada("");

@@ -17,6 +17,7 @@ a:hover {
   text-decoration: none;
 }
 
+path.selected,
 a:hover path {
   fill: #003399 !important;
 }
