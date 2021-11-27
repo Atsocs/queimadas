@@ -1,5 +1,5 @@
-import CitySelector from "./Components/CitySelector";
+import Main from "./Components/Main";
 
 export default function App() {
-  return <CitySelector />;
+  return <Main />;
 }
