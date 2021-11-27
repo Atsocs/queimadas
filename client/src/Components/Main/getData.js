@@ -15,7 +15,7 @@ export const getHereData = (setters) => {
       data.stateName = toTitleCase(data.stateName);
       setters.setSiglaEstado(data.stateCode);
       setters.setNomeEstado(data.stateName);
-      setters.setCidadeSelecionada(data.cityName);
+      setters.setNomeCidade(data.cityName);
       setters.setNumFocosCidade(data.cityFires);
       setters.setNumFocosEstado(data.stateFires);
       setters.setNumFocosBrasil(data.countryFires);

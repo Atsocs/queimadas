@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
 import BrazilMap from "../BrazilMap";
-import Select from "react-select";
-import getCidades from "../../utils/getCidades";
 import FireBoard from "../FireBoard";
 import Loading from "./../Loading";
+import stateNames from "../../utils/stateNames.json";
+import CitySelector from "../CitySelector";
+
 import {
   getBrazilData,
   getStateData,
   getCityData,
   getHereData,
 } from "./getData";
-import stateNames from "../../utils/stateNames.json";
 
 export default function Main() {
   const [loading, setLoading] = useState(true);
 
   const [siglaEstado, setSiglaEstado] = useState("");
   const [nomeEstado, setNomeEstado] = useState("");
-  const [cidadeSelecionada, setCidadeSelecionada] = useState("");
+  const [nomeCidade, setNomeCidade] = useState("");
   const [numFocosBrasil, setNumFocosBrasil] = useState(0);
   const [numFocosEstado, setNumFocosEstado] = useState(0);
   const [numFocosCidade, setNumFocosCidade] = useState(0);
@@ -28,7 +28,7 @@ export default function Main() {
 
       setSiglaEstado,
       setNomeEstado,
-      setCidadeSelecionada,
+      setNomeCidade,
       setNumFocosBrasil,
       setNumFocosEstado,
       setNumFocosCidade,
@@ -44,40 +44,8 @@ export default function Main() {
   }, [nomeEstado]);
 
   useEffect(() => {
-    getCityData(cidadeSelecionada, nomeEstado, setNumFocosCidade);
-  }, [cidadeSelecionada, nomeEstado]);
-
-  const styles = {
-    container: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    select: {
-      menu: (provided, _) => ({
-        ...provided,
-        width: 400,
-      }),
-      control: (provided, _) => ({
-        ...provided,
-        width: 400,
-      }),
-    },
-  };
-
-  const cidades = getCidades(siglaEstado);
-  const placeholder =
-    "Selecione " + (siglaEstado === "" ? "o estado primeiro" : "a cidade");
-
-  let stateData = null;
-  if (siglaEstado !== "") {
-    stateData = { name: nomeEstado, count: numFocosEstado };
-  }
-
-  let cityData = null;
-  if (cidadeSelecionada !== "") {
-    cityData = { name: cidadeSelecionada, count: numFocosCidade };
-  }
+    getCityData(nomeCidade, nomeEstado, setNumFocosCidade);
+  }, [nomeCidade, nomeEstado]);
 
   if (loading) {
     return <Loading />;
@@ -91,31 +59,28 @@ export default function Main() {
           onClick={(sigla) => {
             setSiglaEstado(sigla);
             setNomeEstado(stateNames[sigla]);
-            setCidadeSelecionada("");
+            setNomeCidade("");
           }}
         />
-        <Select
-          name="cidade"
-          styles={styles.select}
-          options={cidades}
-          value={
-            cidadeSelecionada && {
-              value: cidadeSelecionada,
-              label: cidadeSelecionada,
-            }
-          }
-          onChange={({ value, _ }) => {
-            setCidadeSelecionada(value);
-          }}
-          isDisabled={siglaEstado === ""}
-          placeholder={placeholder}
+        <CitySelector
+          nomeCidade={nomeCidade}
+          siglaEstado={siglaEstado}
+          setNomeCidade={setNomeCidade}
         />
       </div>
       <FireBoard
         country={{ name: "Brasil", count: numFocosBrasil }}
-        state={stateData}
-        city={cityData}
-      ></FireBoard>
+        state={siglaEstado && { name: nomeEstado, count: numFocosEstado }}
+        city={nomeCidade && { name: nomeCidade, count: numFocosCidade }}
+      />
     </div>
   );
 }
+
+const styles = {
+  container: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+};
