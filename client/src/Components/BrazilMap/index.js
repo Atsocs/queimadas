@@ -22,12 +22,16 @@ export default function BrazilMap({ onClick, select }) {
           {estadosSvg.map((estado) => {
             return (
               <Estado
+                key={estado.sigla}
                 nome={estado.nome}
                 sigla={estado.sigla}
                 path={estado.path}
                 matrix={estado.matrix}
                 circlePath={estado.circlePath}
-                onClick={() => onClick(estado.sigla)}
+                onClick={(event) => {
+                  event.preventDefault();
+                  onClick(estado.sigla);
+                }}
                 selected={estado.sigla === select}
               />
             );
