@@ -1,10 +1,11 @@
 path {
-  fill: #0094d9;
+  fill: Crimson;
 }
 
 text {
   fill: #fff;
   font: 12px Arial-BoldMT, sans-serif;
+  font-weight:600;
   cursor: pointer;
 }
 
@@ -19,14 +20,14 @@ a:hover {
 
 path.selected,
 a:hover path {
-  fill: #003399 !important;
+  fill: darkred !important;
 }
 
 .circle {
-  fill: #66ccff;
+  fill: darkorange;
 }
 
 a:hover .circle {
-  fill: #003399 !important;
+  fill: darkred !important;
   cursor: pointer;
 }

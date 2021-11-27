@@ -14,7 +14,7 @@ const styles = {
     height: "100vh",
     width: "100vw",
     textAlign: "center",
-    backgroundColor: "tomato"
+    backgroundColor: "crimson"
   },
   heading: {
     position: "relative",
@@ -22,6 +22,6 @@ const styles = {
     margin: 0,
     fontSize: "50px",
     fontFamily: "Arial",
-    color: "yellow",
+    color: "white",
   },
 };
