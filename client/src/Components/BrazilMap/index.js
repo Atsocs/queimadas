@@ -1,6 +1,6 @@
 import React from "react";
 import estadosSvg from "./estados-svg.json";
-import Estado from "./../Estado";
+import Estado from "../Estado";
 
 export default function BrazilMap({ onClick, select }) {
   return (

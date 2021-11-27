@@ -1,4 +1,4 @@
-import CitySelector from "./CitySelector";
+import CitySelector from "./Components/CitySelector";
 
 export default function App() {
   return <CitySelector />;
