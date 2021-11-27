@@ -19,6 +19,8 @@ export const getHereData = (setters) => {
       setters.setNumFocosCidade(data.cityFires);
       setters.setNumFocosEstado(data.stateFires);
       setters.setNumFocosBrasil(data.countryFires);
+
+      setters.setLoading(false)
     })
     .catch((err) => console.log(err));
 };

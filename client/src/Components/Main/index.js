@@ -3,6 +3,7 @@ import BrazilMap from "../BrazilMap";
 import Select from "react-select";
 import getCidades from "../../utils/getCidades";
 import FireBoard from "../FireBoard";
+import Loading from "./../Loading";
 import {
   getBrazilData,
   getStateData,
@@ -12,6 +13,8 @@ import {
 import stateNames from "../../utils/stateNames.json";
 
 export default function Main() {
+  const [loading, setLoading] = useState(true);
+
   const [siglaEstado, setSiglaEstado] = useState("");
   const [nomeEstado, setNomeEstado] = useState("");
   const [cidadeSelecionada, setCidadeSelecionada] = useState("");
@@ -21,6 +24,8 @@ export default function Main() {
 
   useEffect(() => {
     getHereData({
+      setLoading,
+
       setSiglaEstado,
       setNomeEstado,
       setCidadeSelecionada,
@@ -72,6 +77,10 @@ export default function Main() {
   let cityData = null;
   if (cidadeSelecionada !== "") {
     cityData = { name: cidadeSelecionada, count: numFocosCidade };
+  }
+
+  if (loading) {
+    return <Loading />;
   }
 
   return (
