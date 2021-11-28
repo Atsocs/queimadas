@@ -49,10 +49,11 @@ export const getStateData = (nomeEstado, setNumFocosEstado) => {
     });
 };
 
-export const getCityData = (nomeCidade, setNumFocosCidade) => {
+export const getCityData = (nomeCidade, nomeEstado, setNumFocosCidade) => {
   axios
     .post(`${baseURL}/api/city`, {
       city: nomeCidade,
+      state: nomeEstado
     })
     .then((res) => {
       setNumFocosCidade(res.data.num_focos);

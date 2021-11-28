@@ -56,8 +56,9 @@ app.get("/api/here", (req, res) => {
 app.post("/api/city", (req, res) => {
     const body = req.body
     const city = body.city.toUpperCase()
+    const state = body.state.toUpperCase()
     if (body) {
-        const { focos, num_focos } = cityFilter(city)
+        const { focos, num_focos } = cityFilter(city, state)
         res.json({ num_focos: num_focos, focos: focos })
     }
     else {

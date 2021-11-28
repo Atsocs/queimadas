@@ -44,7 +44,7 @@ export default function Main() {
   }, [nomeEstado]);
 
   useEffect(() => {
-    getCityData(nomeCidade, setNumFocosCidade);
+    getCityData(nomeCidade, nomeEstado, setNumFocosCidade);
   }, [nomeCidade]);
 
   if (loading) {
