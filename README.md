@@ -22,8 +22,11 @@ Run the Front End (on /client):
 And
 ### `npm start` 
 
-Run the API (on root):
+Install node modules(on project root):
+### `npm install`
 
-### `npm install` 
-And
+Download Data from INPE:
+### `npm run fetchData`
+
+Run the API (on root):
 ### `npm start` 
