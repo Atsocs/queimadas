@@ -4,6 +4,7 @@ import FireBoard from "../FireBoard";
 import Loading from "./../Loading";
 import stateNames from "../../utils/stateNames.json";
 import CitySelector from "../CitySelector";
+import Top10 from "../Top10";
 
 import {
   getBrazilData,
@@ -53,7 +54,8 @@ export default function Main() {
 
   return (
     <div>
-      <div style={styles.container}>
+      <div style={styles.top_row}>
+        <Top10 />
         <BrazilMap
           select={siglaEstado}
           onClick={(sigla) => {
@@ -68,19 +70,27 @@ export default function Main() {
           setNomeCidade={setNomeCidade}
         />
       </div>
-      <FireBoard
-        country={{ name: "Brasil", count: numFocosBrasil }}
-        state={siglaEstado && { name: nomeEstado, count: numFocosEstado }}
-        city={nomeCidade && { name: nomeCidade, count: numFocosCidade }}
-      />
+      <div style={styles.bottom_row}>
+        <FireBoard
+          country={{ name: "Brasil", count: numFocosBrasil }}
+          state={siglaEstado && { name: nomeEstado, count: numFocosEstado }}
+          city={nomeCidade && { name: nomeCidade, count: numFocosCidade }}
+        />
+      </div>
     </div>
   );
 }
 
 const styles = {
-  container: {
+  top_row: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
+    marginRight: 80,
+  },
+  bottom_row: {
+    position: "relative",
+    left: "-8%",
+    textAlign: "center",
   },
 };

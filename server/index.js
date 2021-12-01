@@ -5,6 +5,7 @@ const cors = require('cors')
 const cityFilter = require('./utils/check_city')
 const stateFilter = require('./utils/check_state')
 const totalFilter = require('./utils/total')
+const top10Filter = require('./utils/top10')
 const xhrLocation = require('./utils/geolocation')
 const stateNames = require('./utils/state_names')
 
@@ -81,6 +82,10 @@ app.post("/api/state", (req, res) => {
 app.get("/api/total", (req, res) => {
     const { num_focos } = totalFilter()
     res.json({ num_focos: num_focos })
+})
+
+app.get("/api/state/top10", (req, res) => {
+    res.json(top10Filter())
 })
 
 

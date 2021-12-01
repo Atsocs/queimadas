@@ -1,4 +1,4 @@
-export default function Fireboard({ country, state, city }) {
+export default function FireBoard({ country, state, city }) {
   return (
     <div>
       <h3>Focos de Queima nas últimas 24h</h3>
