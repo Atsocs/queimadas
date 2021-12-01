@@ -18,10 +18,13 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
+
+//mensagem de confirmação de acesso à API
 app.get("/api", (req, res) => {
     res.json({ message: "Fire check Api" });
 });
 
+//rota responsável por detectar a localização de IP do usuário
 app.get("/api/whereami", (req, res) => {
     const loc = JSON.parse(xhrLocation.response);
     if (loc) {
@@ -32,6 +35,8 @@ app.get("/api/whereami", (req, res) => {
     }
 });
 
+//rota responsável por detectar a localização de IP do usuário
+//e apresentar a quantidade de focos de queimada na cidade do mesmo
 app.get("/api/here", (req, res) => {
     const loc = JSON.parse(xhrLocation.response);
     if (!loc) {
@@ -54,6 +59,8 @@ app.get("/api/here", (req, res) => {
     })
 })
 
+//rota responsável por retornar a quantidade de focos de
+//queimada na cidade selecionada pelo usuário
 app.post("/api/city", (req, res) => {
     const body = req.body
     const city = body.city.toUpperCase()
@@ -67,6 +74,8 @@ app.post("/api/city", (req, res) => {
     }
 })
 
+//rota responsável por retornar a quantidade de focos de
+//queimada no estado selecionado pelo usuário
 app.post("/api/state", (req, res) => {
     const body = req.body
     const state = body.state.toUpperCase()
@@ -79,11 +88,15 @@ app.post("/api/state", (req, res) => {
     }
 })
 
+//rota responsável por retornar a quantidade total de focos
+//de queimada no Brasil
 app.get("/api/total", (req, res) => {
     const { num_focos } = totalFilter()
     res.json({ num_focos: num_focos })
 })
 
+//rota responsável por retornar os 10 estados com as
+//maiores quantidades de focos de queimada
 app.get("/api/state/top10", (req, res) => {
     res.json(top10Filter())
 })
